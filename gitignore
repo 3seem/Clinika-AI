@@ -1,0 +1,111 @@
+# ============================================================
+# Hospitalia AI: .NET + React + SQL Server
+# ============================================================
+
+# ---------- Secrets & environment (NEVER commit) ----------
+.env
+.env.*
+!.env.example
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+secrets.json
+*.pfx
+*.pem
+*.key
+google-credentials*.json
+service-account*.json
+
+# ---------- .NET build output ----------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+artifacts/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+launchSettings.json
+project.lock.json
+*.nupkg
+*.snupkg
+.nuget/
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+coverage*.xml
+*.coverage
+*.coveragexml
+
+# ---------- Entity Framework / local DB files ----------
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.sqlite
+*.sqlite3
+*.db
+
+# ---------- React / Node ----------
+node_modules/
+frontend/build/
+frontend/dist/
+.next/
+out/
+.vite/
+.cache/
+.parcel-cache/
+.eslintcache
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+*.tsbuildinfo
+
+# ---------- AI / ML artifacts ----------
+*.pt
+*.pth
+*.onnx
+*.h5
+*.ckpt
+*.safetensors
+models/weights/
+datasets/
+data/raw/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ---------- Patient data & uploads (privacy: never commit) ----------
+uploads/
+wwwroot/uploads/
+storage/
+*.dcm
+patient-data/
+sample-patients/
+audio-recordings/
+*.wav
+*.mp3
+
+# ---------- Logs & temp ----------
+logs/
+*.log
+*.tmp
+*.temp
+
+# ---------- IDE & OS ----------
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
