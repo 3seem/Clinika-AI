@@ -3302,11 +3302,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
+      "projectUniqueName": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
       "projectName": "Backend.WebApi",
-      "projectPath": "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
+      "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "D:\\Graduation Project\\Backend\\Backend.WebApi\\obj\\",
+      "outputPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3329,11 +3329,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj": {
-              "projectPath": "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj"
+            "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj": {
+              "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj"
             },
-            "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
-              "projectPath": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
+            "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+              "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj": {}
+    "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj": {}
   },
   "projects": {
-    "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj": {
+    "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj",
+        "projectUniqueName": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj",
         "projectName": "Backend.Application",
-        "projectPath": "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj",
+        "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Graduation Project\\Backend\\Backend.Application\\obj\\",
+        "outputPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -34,8 +34,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Graduation Project\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
-                "projectPath": "D:\\Graduation Project\\Backend\\Backend.Domain\\Backend.Domain.csproj"
+              "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\Backend.Domain.csproj"
               }
             }
           }
@@ -350,14 +350,14 @@
         }
       }
     },
-    "D:\\Graduation Project\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
+    "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\Backend.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Graduation Project\\Backend\\Backend.Domain\\Backend.Domain.csproj",
+        "projectUniqueName": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\Backend.Domain.csproj",
         "projectName": "Backend.Domain",
-        "projectPath": "D:\\Graduation Project\\Backend\\Backend.Domain\\Backend.Domain.csproj",
+        "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\Backend.Domain.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Graduation Project\\Backend\\Backend.Domain\\obj\\",
+        "outputPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -692,14 +692,14 @@
         }
       }
     },
-    "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+    "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
         "projectName": "Backend.Infrastructure",
-        "projectPath": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\obj\\",
+        "outputPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -722,8 +722,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj": {
-                "projectPath": "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj"
+              "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj": {
+                "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj"
               }
             }
           }
@@ -1048,14 +1048,14 @@
         }
       }
     },
-    "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj": {
+    "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
+        "projectUniqueName": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
         "projectName": "Backend.WebApi",
-        "projectPath": "D:\\Graduation Project\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
+        "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\Backend.WebApi.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Graduation Project\\Backend\\Backend.WebApi\\obj\\",
+        "outputPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1078,11 +1078,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj": {
-                "projectPath": "D:\\Graduation Project\\Backend\\Backend.Application\\Backend.Application.csproj"
+              "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj": {
+                "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Application\\Backend.Application.csproj"
               },
-              "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
-                "projectPath": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
+              "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+                "projectPath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
               }
             }
           }

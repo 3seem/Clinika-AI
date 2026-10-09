@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8Prsk8GYh/U=",
+  "dgSpecHash": "56qJxUTxuHc=",
   "success": true,
-  "projectFilePath": "D:\\Graduation Project\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+  "projectFilePath": "D:\\Graduation Project\\Clinika AI\\Backend\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
