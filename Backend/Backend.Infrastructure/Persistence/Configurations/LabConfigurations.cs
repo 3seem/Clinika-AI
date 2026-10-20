@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Entities;
+using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -72,6 +72,8 @@ public class LabOrderConfiguration : IEntityTypeConfiguration<LabOrder>
             "[status] IN ('ordered','sample_collected','processing','under_review','published','cancelled')"));
         e.HasKey(x => x.LabOrderId);
         e.Property(x => x.Status).HasMaxLength(30).IsRequired();
+        e.Property(x => x.ReportPdfUrl).HasMaxLength(500);
+        e.Property(x => x.PublishedAt);
         e.HasOne<Patient>().WithMany().HasForeignKey(x => x.PatientId).OnDelete(DeleteBehavior.Restrict);
         e.HasOne<Doctor>().WithMany().HasForeignKey(x => x.DoctorId).OnDelete(DeleteBehavior.Restrict);
         e.HasOne<DiagnosticLab>().WithMany().HasForeignKey(x => x.LabId).OnDelete(DeleteBehavior.Restrict);

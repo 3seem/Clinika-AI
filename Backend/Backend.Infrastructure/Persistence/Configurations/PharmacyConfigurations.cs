@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Entities;
+using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -63,8 +63,9 @@ public class PrescriptionItemConfiguration : IEntityTypeConfiguration<Prescripti
         e.HasKey(x => x.ItemId);
         e.Property(x => x.Dosage).HasMaxLength(50).IsRequired();
         e.Property(x => x.Frequency).HasMaxLength(50).IsRequired();
+        e.Property(x => x.CustomDrugName).HasMaxLength(150);
         e.HasOne<Prescription>().WithMany().HasForeignKey(x => x.PrescriptionId).OnDelete(DeleteBehavior.Cascade);
-        e.HasOne<DrugMaster>().WithMany().HasForeignKey(x => x.DrugId).OnDelete(DeleteBehavior.Restrict);
+        e.HasOne<DrugMaster>().WithMany().HasForeignKey(x => x.DrugId).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
     }
 }
 
@@ -113,7 +114,7 @@ public class PharmacyOrderItemConfiguration : IEntityTypeConfiguration<PharmacyO
         e.Property(x => x.Subtotal).HasPrecision(10, 2)
             .HasComputedColumnSql("[quantity_dispensed] * [unit_price]", stored: true);
         e.HasOne<PharmacyOrder>().WithMany().HasForeignKey(x => x.OrderId).OnDelete(DeleteBehavior.Cascade);
-        e.HasOne<PrescriptionItem>().WithMany().HasForeignKey(x => x.PrescriptionItemId).OnDelete(DeleteBehavior.Restrict);
+        e.HasOne<PrescriptionItem>().WithMany().HasForeignKey(x => x.PrescriptionItemId).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
         e.HasOne<PharmacyInventory>().WithMany().HasForeignKey(x => x.InventoryId).OnDelete(DeleteBehavior.Restrict);
     }
 }

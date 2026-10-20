@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Entities;
+using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Backend.Infrastructure.Persistence.Configurations;
+
 public class AppointmentConfiguration : IEntityTypeConfiguration<Appointment>
 {
     public void Configure(EntityTypeBuilder<Appointment> e)
@@ -19,10 +20,12 @@ public class AppointmentConfiguration : IEntityTypeConfiguration<Appointment>
         e.HasKey(x => x.AppointmentId);
         e.Property(x => x.Status).HasMaxLength(20).IsRequired();
         e.Property(x => x.ConsultationType).HasMaxLength(20).IsRequired();
+        e.Property(x => x.ReasonForVisit);
+        e.Property(x => x.TelehealthRoomId).HasMaxLength(128);
         e.HasOne<Patient>().WithMany().HasForeignKey(x => x.PatientId).OnDelete(DeleteBehavior.Restrict);
         e.HasOne<Doctor>().WithMany().HasForeignKey(x => x.DoctorId).OnDelete(DeleteBehavior.Restrict);
 
-        // يمنع حجز نفس الميعاد لنفس الدكتور مرتين (إلا لو الحجز الأول اتلغى)
+        // Prevents double booking active slots
         e.HasIndex(x => new { x.DoctorId, x.AppointmentDate, x.StartTime })
             .IsUnique()
             .HasFilter("[status] <> 'cancelled'")
@@ -37,7 +40,7 @@ public class DoctorReviewConfiguration : IEntityTypeConfiguration<DoctorReview>
         e.ToTable("doctor_reviews", t =>
         {
             t.HasCheckConstraint("CK_doctor_reviews_rating", "[rating] BETWEEN 1 AND 5");
-            t.UseSqlOutputClause(false);   // عشان في trigger على الجدول ده (الدفعة 7)
+            t.UseSqlOutputClause(false);
         });
         e.HasKey(x => x.ReviewId);
         e.HasIndex(x => x.AppointmentId).IsUnique();
@@ -54,6 +57,7 @@ public class EmrEncounterConfiguration : IEntityTypeConfiguration<EmrEncounter>
         e.ToTable("emr_encounters");
         e.HasKey(x => x.EncounterId);
         e.Property(x => x.Icd10Code).HasColumnName("icd10_code").HasMaxLength(20);
+        e.Property(x => x.FollowUpDate);
         e.HasIndex(x => x.AppointmentId).IsUnique();
         e.HasOne<Appointment>().WithMany().HasForeignKey(x => x.AppointmentId).OnDelete(DeleteBehavior.Restrict);
         e.HasOne<Patient>().WithMany().HasForeignKey(x => x.PatientId).OnDelete(DeleteBehavior.Restrict);

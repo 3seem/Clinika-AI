@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +8,15 @@ public class Doctor
 {
     public Guid DoctorId { get; set; }          // PK وهو نفسه FK على users
     public int SpecialtyId { get; set; }
+    public string FullName { get; set; } = string.Empty;
+    public string Title { get; set; } = "Specialist";   // Consultant, Specialist, Professor, etc.
     public string LicenseNumber { get; set; } = string.Empty;
+    public string? ClinicName { get; set; }
+    public string? ClinicAddress { get; set; }
+    public string? ClinicCity { get; set; }
+    public decimal? ClinicLat { get; set; }
+    public decimal? ClinicLng { get; set; }
+    public string? ProfilePictureUrl { get; set; }
     public string? Bio { get; set; }
     public decimal ConsultationFee { get; set; }
     public int ExperienceYears { get; set; }
@@ -24,6 +32,7 @@ public class DoctorSchedule
     public TimeOnly StartTime { get; set; }
     public TimeOnly EndTime { get; set; }
     public int SlotDurationMinutes { get; set; } = 30;
+    public string ConsultationType { get; set; } = "both"; // clinic, telehealth, both
     public bool IsActive { get; set; } = true;
 }
 

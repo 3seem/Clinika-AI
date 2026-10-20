@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Entities;
+using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Backend.Infrastructure.Persistence.Configurations;
+
 public class DoctorConfiguration : IEntityTypeConfiguration<Doctor>
 {
     public void Configure(EntityTypeBuilder<Doctor> e)
@@ -15,8 +16,15 @@ public class DoctorConfiguration : IEntityTypeConfiguration<Doctor>
         e.Property(x => x.DoctorId).ValueGeneratedNever();
         e.HasOne<User>().WithOne().HasForeignKey<Doctor>(x => x.DoctorId).OnDelete(DeleteBehavior.Cascade);
         e.HasOne<MedicalSpecialty>().WithMany().HasForeignKey(x => x.SpecialtyId).OnDelete(DeleteBehavior.Restrict);
+        e.Property(x => x.FullName).HasMaxLength(150).IsRequired();
+        e.Property(x => x.Title).HasMaxLength(50).IsRequired().HasDefaultValue("Specialist");
         e.Property(x => x.LicenseNumber).HasMaxLength(100).IsRequired();
         e.HasIndex(x => x.LicenseNumber).IsUnique();
+        e.Property(x => x.ClinicName).HasMaxLength(150);
+        e.Property(x => x.ClinicCity).HasMaxLength(50);
+        e.Property(x => x.ClinicLat).HasPrecision(9, 6);
+        e.Property(x => x.ClinicLng).HasPrecision(9, 6);
+        e.Property(x => x.ProfilePictureUrl).HasMaxLength(500);
         e.Property(x => x.ConsultationFee).HasPrecision(10, 2);
         e.Property(x => x.RatingAverage).HasPrecision(3, 2);
     }
@@ -30,8 +38,10 @@ public class DoctorScheduleConfiguration : IEntityTypeConfiguration<DoctorSchedu
         {
             t.HasCheckConstraint("CK_DocSchedule_Day", "[day_of_week] BETWEEN 0 AND 6");
             t.HasCheckConstraint("CK_DocSchedule_Time", "[end_time] > [start_time]");
+            t.HasCheckConstraint("CK_DocSchedule_Type", "[consultation_type] IN ('clinic', 'telehealth', 'both')");
         });
         e.HasKey(x => x.ScheduleId);
+        e.Property(x => x.ConsultationType).HasMaxLength(20).IsRequired().HasDefaultValue("both");
         e.HasOne<Doctor>().WithMany().HasForeignKey(x => x.DoctorId).OnDelete(DeleteBehavior.Cascade);
     }
 }

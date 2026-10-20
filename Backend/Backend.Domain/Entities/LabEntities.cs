@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -32,7 +32,6 @@ public class Phlebotomist
     public decimal? CurrentLocationLat { get; set; }
     public decimal? CurrentLocationLng { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
-    // spatial_location (GEOGRAPHY) اتأجّل
 }
 
 public class LabOfferedTest
@@ -55,6 +54,8 @@ public class LabOrder
     public bool IsHomeCollection { get; set; }
     public string? CollectionAddress { get; set; }
     public string Status { get; set; } = "ordered";
+    public string? ReportPdfUrl { get; set; }
+    public DateTimeOffset? PublishedAt { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }
 

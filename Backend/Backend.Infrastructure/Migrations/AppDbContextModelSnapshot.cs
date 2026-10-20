@@ -17,7 +17,7 @@ namespace Backend.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -199,6 +199,10 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("patient_id");
 
+                    b.Property<string>("ReasonForVisit")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("reason_for_visit");
+
                     b.Property<TimeOnly>("StartTime")
                         .HasColumnType("time")
                         .HasColumnName("start_time");
@@ -208,6 +212,11 @@ namespace Backend.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("status");
+
+                    b.Property<string>("TelehealthRoomId")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnName("telehealth_room_id");
 
                     b.HasKey("AppointmentId")
                         .HasName("pk_appointments");
@@ -332,6 +341,30 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("bio");
 
+                    b.Property<string>("ClinicAddress")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("clinic_address");
+
+                    b.Property<string>("ClinicCity")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("clinic_city");
+
+                    b.Property<decimal?>("ClinicLat")
+                        .HasPrecision(9, 6)
+                        .HasColumnType("decimal(9,6)")
+                        .HasColumnName("clinic_lat");
+
+                    b.Property<decimal?>("ClinicLng")
+                        .HasPrecision(9, 6)
+                        .HasColumnType("decimal(9,6)")
+                        .HasColumnName("clinic_lng");
+
+                    b.Property<string>("ClinicName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("clinic_name");
+
                     b.Property<decimal>("ConsultationFee")
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)")
@@ -341,11 +374,22 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("experience_years");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("full_name");
+
                     b.Property<string>("LicenseNumber")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("license_number");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("profile_picture_url");
 
                     b.Property<decimal>("RatingAverage")
                         .HasPrecision(3, 2)
@@ -355,6 +399,14 @@ namespace Backend.Infrastructure.Migrations
                     b.Property<int>("SpecialtyId")
                         .HasColumnType("int")
                         .HasColumnName("specialty_id");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasDefaultValue("Specialist")
+                        .HasColumnName("title");
 
                     b.Property<int>("TotalReviewsCount")
                         .HasColumnType("int")
@@ -474,6 +526,14 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("schedule_id");
 
+                    b.Property<string>("ConsultationType")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasDefaultValue("both")
+                        .HasColumnName("consultation_type");
+
                     b.Property<int>("DayOfWeek")
                         .HasColumnType("int")
                         .HasColumnName("day_of_week");
@@ -509,6 +569,8 @@ namespace Backend.Infrastructure.Migrations
                             t.HasCheckConstraint("CK_DocSchedule_Day", "[day_of_week] BETWEEN 0 AND 6");
 
                             t.HasCheckConstraint("CK_DocSchedule_Time", "[end_time] > [start_time]");
+
+                            t.HasCheckConstraint("CK_DocSchedule_Type", "[consultation_type] IN ('clinic', 'telehealth', 'both')");
                         });
                 });
 
@@ -630,6 +692,10 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("doctor_id");
 
+                    b.Property<DateOnly?>("FollowUpDate")
+                        .HasColumnType("date")
+                        .HasColumnName("follow_up_date");
+
                     b.Property<string>("Icd10Code")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
@@ -741,6 +807,15 @@ namespace Backend.Infrastructure.Migrations
                     b.Property<Guid>("PatientId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("patient_id");
+
+                    b.Property<DateTimeOffset?>("PublishedAt")
+                        .HasColumnType("datetimeoffset")
+                        .HasColumnName("published_at");
+
+                    b.Property<string>("ReportPdfUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasColumnName("report_pdf_url");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -1267,7 +1342,7 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("order_id");
 
-                    b.Property<Guid>("PrescriptionItemId")
+                    b.Property<Guid?>("PrescriptionItemId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("prescription_item_id");
 
@@ -1464,13 +1539,18 @@ namespace Backend.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("item_id");
 
+                    b.Property<string>("CustomDrugName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)")
+                        .HasColumnName("custom_drug_name");
+
                     b.Property<string>("Dosage")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("dosage");
 
-                    b.Property<int>("DrugId")
+                    b.Property<int?>("DrugId")
                         .HasColumnType("int")
                         .HasColumnName("drug_id");
 
@@ -2007,7 +2087,6 @@ namespace Backend.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("PrescriptionItemId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
                         .HasConstraintName("fk_pharmacy_order_items_prescription_items_prescription_item_id");
                 });
 
@@ -2067,7 +2146,6 @@ namespace Backend.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("DrugId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
                         .HasConstraintName("fk_prescription_items_drugs_master_drug_id");
 
                     b.HasOne("Backend.Domain.Entities.Prescription", null)

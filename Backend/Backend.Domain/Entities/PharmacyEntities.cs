@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -37,7 +37,8 @@ public class PrescriptionItem
 {
     public Guid ItemId { get; set; } = Guid.NewGuid();
     public Guid PrescriptionId { get; set; }
-    public int DrugId { get; set; }
+    public int? DrugId { get; set; }
+    public string? CustomDrugName { get; set; }
     public string Dosage { get; set; } = string.Empty;
     public string Frequency { get; set; } = string.Empty;
     public int DurationDays { get; set; }
@@ -76,9 +77,9 @@ public class PharmacyOrderItem
 {
     public Guid OrderItemId { get; set; } = Guid.NewGuid();
     public Guid OrderId { get; set; }
-    public Guid PrescriptionItemId { get; set; }
+    public Guid? PrescriptionItemId { get; set; }
     public Guid? InventoryId { get; set; }
     public int QuantityDispensed { get; set; }
     public decimal UnitPrice { get; set; }
-    public decimal Subtotal { get; private set; }   // عمود محسوب في الداتابيز، متكتبش فيه
+    public decimal Subtotal { get; private set; }   // Computed column in DB
 }

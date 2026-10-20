@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,6 +14,8 @@ public class Appointment
     public TimeOnly EndTime { get; set; }
     public string Status { get; set; } = "booked";
     public string ConsultationType { get; set; } = "clinic";
+    public string? ReasonForVisit { get; set; }
+    public string? TelehealthRoomId { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }
 
@@ -41,6 +43,7 @@ public class EmrEncounter
     public string? AssessmentNotes { get; set; }
     public string? PlanNotes { get; set; }
     public string? AiScribeTranscript { get; set; }
+    public DateOnly? FollowUpDate { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }
 
@@ -51,6 +54,6 @@ public class AiTriageSession
     public string SymptomsPrompt { get; set; } = string.Empty;
     public string UrgencyTier { get; set; } = string.Empty;
     public int? SuggestedSpecialtyId { get; set; }
-    public string? AgentReasoning { get; set; }      // JSON كنص
+    public string? AgentReasoning { get; set; }      // JSON text
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }
